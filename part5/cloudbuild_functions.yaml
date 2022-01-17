@@ -1,0 +1,11 @@
+steps:
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  args:
+  - "gcloud"
+  - "functions"
+  - "deploy"
+  - "price-checker-function"
+  - "--region=asia-northeast1"
+  - "--source=."
+  - "--trigger-http"
+  - "--runtime=nodejs16"

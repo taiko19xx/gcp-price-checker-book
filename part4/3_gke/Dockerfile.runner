@@ -1,0 +1,10 @@
+FROM node:16-slim
+
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+
+COPY checker/ ./checker
+COPY lib/ ./lib
+
+CMD ["node", "checker/runner.js"]

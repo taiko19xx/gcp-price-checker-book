@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: price-checker-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: price-checker
+  template:
+    metadata:
+      labels:
+        app: price-checker
+    spec:
+      containers:
+        - name: price-checker-app
+          image: asia.gcr.io/（プロジェクトID）/price-checker-image:latest
+          ports:
+          - containerPort: 8080
+          env:
+          - name: PORT
+            value: "8080"
+      serviceAccountName: gcloud-workload-identity
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: price-checker-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: price-checker
+  ports:
+  - port: 80
+    targetPort: 8080

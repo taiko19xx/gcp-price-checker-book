@@ -1,0 +1,9 @@
+steps:
+- name: "gcr.io/cloud-builders/docker"
+  args:
+  - "build"
+  - "--tag=asia.gcr.io/（プロジェクトID）/price-checker-runner-image"
+  - "--file=Dockerfile.runner"
+  - .
+images:
+- "asia.gcr.io/（プロジェクトID）/price-checker-runner-image"

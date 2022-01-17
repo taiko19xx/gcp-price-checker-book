@@ -1,0 +1,18 @@
+steps:
+- name: "gcr.io/cloud-builders/docker"
+  args:
+  - "build"
+  - "--tag=asia.gcr.io/（プロジェクトID）/price-checker-image:latest"
+  - "--file=Dockerfile.express"
+  - "."
+- name: "gcr.io/cloud-builders/docker"
+  args:
+  - "push"
+  - "asia.gcr.io/（プロジェクトID）/price-checker-image:latest"
+- name: "gcr.io/cloud-builders/gke-deploy"
+  args:
+  - run
+  - --filename=http_endpoint.yaml
+  - --image=asia.gcr.io/（プロジェクトID）/price-checker-image:latest
+  - --location=asia-northeast1-a
+  - --cluster=price-checker-cluster

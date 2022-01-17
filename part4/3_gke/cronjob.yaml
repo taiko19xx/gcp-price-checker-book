@@ -1,0 +1,18 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: price-checker-cronjob-amazon
+spec:    
+  schedule: "0 14 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: price-checker-app
+            image: asia.gcr.io/（プロジェクトID）/price-checker-runner-image:latest
+            env:
+            - name: CHECKER_SITE
+              value: "amazon.co.jp"
+          serviceAccountName: gcloud-workload-identity
+          restartPolicy: OnFailure
