@@ -4,7 +4,7 @@
 設定や利用方法は書籍を参照してください。
 
 書籍は各ストアで配信・販売中です。
-* Amazon（ https://amzn.to/3KgNYxF ）
+* Amazon（ https://amzn.to/33FongZ ）
 * その他（出版元を参照 https://nextpublishing.jp/book/14249.html ）
 
 ## 構造
